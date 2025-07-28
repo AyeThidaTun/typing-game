@@ -4,7 +4,7 @@ export default function HomePage() {
   return (
     <main className="">
       <p className="flex justify-center py-20  text-2xl font-mono">
-        Welcome to Typo
+        Welcome!
       </p>
       <Countdown />
       <Faker />
