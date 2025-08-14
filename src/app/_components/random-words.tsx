@@ -1,12 +1,19 @@
-import { faker } from "@faker-js/faker";
+import UserInput from "./user-input";
 
-const words = faker.word.words(50);
-export default function Faker() {
+type Props = {
+  words: string;
+  typed: string;
+};
+
+export default function Faker({ words, typed }: Props) {
   return (
-    <section className="flex justify-center px-30 md:px-100">
-      <p className="text-start text-lg leading-9 font-mono text-gray-300">
-        {words}
-      </p>
-    </section>
+    <div className="relative leading-relaxed">
+      <section className="flex flex-col justify-center">
+        <p className="text-start text-lg leading-9 font-mono text-gray-500">
+          {words}
+        </p>
+        <UserInput characters={typed} words={words} />
+      </section>
+    </div>
   );
 }
