@@ -9,7 +9,7 @@ export default function Caret() {
       animate={{ opacity: 1 }}
       transition={{ repeat: Infinity, repeatType: "reverse", duration: 0.6 }}
       aria-hidden="true"
-      className="inline-block w-0.5 h-6 bg-yellow-500 align-middle"
+      className="inline-block w-0.5 h-6 bg-yellow-900 align-middle"
     />
   );
 }

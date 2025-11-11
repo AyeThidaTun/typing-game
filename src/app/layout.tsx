@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mushroom Space",
+  title: "Coffee Type",
   description: "A typing game to improve your typing speed and accuracy",
 };
 

@@ -23,9 +23,9 @@ export default function UserInput({ characters, words }: Props) {
         return (
           <span
             key={index}
-            className={cn("text-yellow-500 text-lg leading-9", {
-              "text-red-500": !isCorrect && !isWhitespace,
-              "text-yellow-500": isCorrect && !isWhitespace,
+            className={cn("text-yellow-700 text-lg leading-9", {
+              "text-red-300": !isCorrect && !isWhitespace,
+              "text-yellow-800": isCorrect && !isWhitespace,
               "bg-red-500/50": !isCorrect && isWhitespace,
             })}
           >
