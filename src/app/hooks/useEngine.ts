@@ -10,9 +10,9 @@ export type State = "start" | "run" | "finish";
 
 // future enhancements to be included > asking for user's preference
 const numOfWords = 50;
-export const timer = 10;
+// export const timer = 10;
 
-export default function useEngine() {
+export default function useEngine(timer: number) {
   const [state, setState] = useState<State>("start");
   const { words, updateWords } = useWords(numOfWords);
   const { timeLeft, startCountdown, resetCountdown } = useTimer(timer);
@@ -29,38 +29,30 @@ export default function useEngine() {
   const isStarting = state === "start" && cursor > 0;
   const isFinished = cursor === words.length;
 
-  useEffect(()=>{
-    if(isStarting){
+  useEffect(() => {
+    if (isStarting) {
       setState("run");
       startCountdown();
     }
   }, [isStarting, startCountdown]);
 
-  useEffect(()=>{
-    if(!timeLeft) {
+  useEffect(() => {
+    if (!timeLeft) {
       setState("finish");
       sumErrors();
     }
   }, [timeLeft, sumErrors]);
 
   //generate new words when first shown words are finished
-  useEffect(()=>{
-    if(isFinished) {
+  useEffect(() => {
+    if (isFinished) {
       sumErrors();
       updateWords();
       clearTyped();
     }
-  }, [
-    cursor,
-    words,
-    clearTyped,
-    typed,
-    isFinished,
-    updateWords,
-    sumErrors
-  ]);
+  }, [cursor, words, clearTyped, typed, isFinished, updateWords, sumErrors]);
 
-  const restart = useCallback(()=>{
+  const restart = useCallback(() => {
     resetCountdown();
     resetTotalTyped();
     setState("start");

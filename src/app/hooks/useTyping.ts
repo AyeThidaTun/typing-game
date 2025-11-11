@@ -5,7 +5,7 @@ const isKeyboardCodeAllowed = (code: string) => {
   //valid typing inputs
   return (
     code.startsWith("Key") ||
-    code.startsWith("Digit") ||
+    code.startsWith("Digit") || 
     code === "Backspace" ||
     code == "Space"
   );

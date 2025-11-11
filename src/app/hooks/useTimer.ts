@@ -7,6 +7,13 @@ export default function useTimer(seconds: number) {
   //stores interval ID from setInterval
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  useEffect(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    setTimeLeft(seconds);
+  }, [seconds]);
+
   const startCountdown = useCallback(() => {
     console.log("starting countdown...");
     intervalRef.current = setInterval(() => {
