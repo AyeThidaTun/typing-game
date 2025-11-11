@@ -15,7 +15,7 @@ export default function HomePage() {
     useEngine(selectedTimer);
   return (
     <main className="">
-      <p className="flex justify-center pt-20 pb-10 text-2xl font-mono text-yellow-950">
+      <p className="flex justify-center pt-20 text-2xl font-mono text-yellow-950">
         Coffee Type {""}
         <Icon
           icon="streamline-pixel:food-drink-coffee"
