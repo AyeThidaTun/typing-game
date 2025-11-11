@@ -49,6 +49,7 @@ export default function HomePage() {
         errors={errors}
         accuracy={calAccuracy(errors, totalTyped)}
         state={state}
+        onClose={restart}
       />
       <Footer />
     </main>
