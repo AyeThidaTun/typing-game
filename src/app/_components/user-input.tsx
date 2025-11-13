@@ -10,7 +10,7 @@ export default function UserInput({ characters, words }: Props) {
   const userInput = characters.split("");
 
   return (
-    <div className="absolute top-0 font-mono text-lg leading-relaxed whitespace-pre-wrap break-words">
+    <div className="absolute top-0 font-mono text-md leading-relaxed whitespace-pre-wrap break-words">
       {userInput.map((char, index) => {
         const expectedChar = words[index];
         const userInput = char;
@@ -23,7 +23,7 @@ export default function UserInput({ characters, words }: Props) {
         return (
           <span
             key={index}
-            className={cn("text-yellow-700 text-lg leading-9", {
+            className={cn("text-yellow-700 text-md leading-9", {
               "text-red-300": !isCorrect && !isWhitespace,
               "text-yellow-800": isCorrect && !isWhitespace,
               "bg-red-500/50": !isCorrect && isWhitespace,
