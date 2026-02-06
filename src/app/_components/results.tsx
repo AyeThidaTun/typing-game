@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react";
 
 type Props = {
   wpm: number;
@@ -63,7 +63,7 @@ export default function Results({
                 Your Coffee Type Results
               </DialogTitle>
               <DialogDescription>
-                <ul className="flex flex-col items-center space-y-2 font-mono pt-10 text-md">
+                <span className="flex flex-col items-center space-y-2 font-mono pt-10 text-md">
                   <motion.li
                     initial={initial}
                     animate={animate}
@@ -88,7 +88,7 @@ export default function Results({
                   >
                     Accuracy: {accuracy.toFixed(2)}%
                   </motion.li>
-                </ul>
+                </span>
               </DialogDescription>
             </DialogHeader>
           </DialogContent>

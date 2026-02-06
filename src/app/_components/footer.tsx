@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <section className="z-10 font-mono flex justify-center px-100 pt-10 text-sm text-gray-400">
+    <section className="fixed bottom-10 left-0 right-0 z-10 font-mono text-center px-100 pt-5 text-sm text-gray-400">
       <p>Developed by Aye Thida Tun.</p>
     </section>
   );

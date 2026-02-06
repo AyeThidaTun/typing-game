@@ -13,12 +13,9 @@ export default function RestartButton({
   };
 
   return (
-    <section className="py-10 px-30 md:px-100 flex justify-center">
+    <section className="fixed bottom-22 left-0 right-0 flex justify-center">
       <button ref={buttonRef} onClick={handleClick}>
-        <Icon
-          icon="solar:restart-circle-bold"
-          className="text-4xl text-gray-400"
-        />
+        <Icon icon="solar:restart-square-line-duotone" width="30" height="30"/>
       </button>
     </section>
   );
