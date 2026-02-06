@@ -8,20 +8,20 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Icon } from "@iconify/react";
 
-export default function LoginPage() {
+export default function SignUpPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleLogin() {
-    const res = await fetch("/api/auth/login", {
+  async function handleSignup() {
+    const res = await fetch("/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
     });
 
     if (!res.ok) {
-      toast.error("Invalid Login");
+      toast.error("Invalid Signup");
       return;
     }
 
@@ -32,7 +32,7 @@ export default function LoginPage() {
     <section className="font-mono flex items-center justify-center h-screen">
       <div className="w-full max-w-md border rounded-sm p-10 space-y-8 text-yellow-850">
         <p className="flex items-center justify-center text-md text-yellow-950">
-          Login to Coffee Type!
+          Sign up for Coffee Type!
           <Icon
             icon="streamline-pixel:food-drink-coffee"
             width="32"
@@ -75,13 +75,13 @@ export default function LoginPage() {
               type="button"
               variant="brown"
               className="cursor-pointer"
-              onClick={handleLogin}
+              onClick={handleSignup}
             >
-              Login
+              Sign Up
             </Button>
-            <Link href="/signup">
+            <Link href="/login">
               <p className="underline text-yellow-700 text-xs">
-                Don&apos;t have an account? Sign up here.
+                Already have an account? Login here.
               </p>
             </Link>
           </Field>
