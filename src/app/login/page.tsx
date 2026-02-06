@@ -25,7 +25,11 @@ export default function LoginPage() {
       return;
     }
 
-    window.location.href = "/";
+    toast.success("Login Successful!");
+    
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 1000);
   }
 
   return (
