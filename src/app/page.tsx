@@ -6,8 +6,11 @@ import Results from "./_components/results";
 import useEngine from "./hooks/useEngine";
 import { calAccuracy, calwpm } from "./hooks/useCalculator";
 import { useState } from "react";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react";
 import Footer from "./_components/footer";
+import LoginButton from "./_components/login-btn";
+import { Button } from "@/components/ui/button";
+
 
 export default function HomePage() {
   const [selectedTimer, setSelectedTimer] = useState(10);
@@ -15,6 +18,7 @@ export default function HomePage() {
     useEngine(selectedTimer);
   return (
     <main className="">
+      <LoginButton />
       <p className="flex justify-center pt-20 text-xl font-mono text-yellow-950">
         Coffee Type {""}
         <Icon
@@ -26,17 +30,18 @@ export default function HomePage() {
       </p>
       <section className="px-100 pt-20 space-x-2">
         {[10, 30, 60].map((t) => (
-          <button
+          <Button
             key={t}
+            variant="timer"
             onClick={() => setSelectedTimer(t)}
-            className={`px-4 py-1 rounded-full font-mono text-sm border-0 cursor-pointer ${
+            className={`${
               selectedTimer === t
-                ? "bg-yellow-900 text-white"
+                ? "bg-yellow-900 hover:bg-yellow-900 text-white"
                 : "bg-gray-200 text-gray-500"
             }`}
           >
             {t}s
-          </button>
+          </Button>
         ))}
       </section>
       <Countdown time={timeLeft} />
