@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Icon } from "@iconify/react";
+import { redirect } from "next/navigation";
 
 export default function SignUpPage() {
   const [name, setName] = useState("");
@@ -21,11 +22,11 @@ export default function SignUpPage() {
     });
 
     if (!res.ok) {
-      toast.error("Invalid Signup");
+      toast.error("Failed to sign up. Please try again.");
       return;
     }
 
-    window.location.href = "/";
+    redirect("/");
   }
 
   return (

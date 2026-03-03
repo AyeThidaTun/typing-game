@@ -46,7 +46,7 @@ export default function LoginPage() {
         </p>
         <FieldGroup>
           <Field>
-            <FieldLabel htmlFor="fieldgroup-name">Name</FieldLabel>
+            <FieldLabel htmlFor="name">Name</FieldLabel>
             <Input
               id="name"
               placeholder="Enter your name"
@@ -54,7 +54,7 @@ export default function LoginPage() {
             />
           </Field>
           <Field>
-            <FieldLabel htmlFor="fieldgroup-email">Email</FieldLabel>
+            <FieldLabel htmlFor="email">Email</FieldLabel>
             <Input
               id="email"
               type="email"
@@ -63,7 +63,7 @@ export default function LoginPage() {
             />
           </Field>
           <Field>
-            <FieldLabel htmlFor="fieldgroup-password">Password</FieldLabel>
+            <FieldLabel htmlFor="password">Password</FieldLabel>
             <Input
               id="password"
               type="password"
