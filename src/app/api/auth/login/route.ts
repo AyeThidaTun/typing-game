@@ -1,6 +1,8 @@
 import { NextResponse, NextRequest } from "next/server";
 import bcrypt from "bcryptjs";
 import { PrismaClient } from "@prisma/client";
+import jwt from "jsonwebtoken";
+
 const prisma = new PrismaClient();
 
 export async function POST(request: NextRequest) {
@@ -37,35 +39,36 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    //generate jwt token
+    const token = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+      },
+      process.env.JWT_SECRET!,
+      {
+        expiresIn: "1d",
+      },
+    );
+
     const response = NextResponse.json(
       {
         message: "Login successful",
+        token,
       },
       { status: 200 },
     );
 
-    //generate jwt token
-    // const token = jwt.sign(
-    //   {
-    //     userId: user.id,
-    //     email: user.email,
-    //     password: user.password,
-    //   },
-    //   process.env.JWT_SECRET!,
-    //   {
-    //     expiresIn: "1d",
-    //   },
-    // );
-
     //set cookie for sec
-    // response.cookies.set({
-    //   name: "token",
-    //   value: token,
-    //   httpOnly: true,
-    //   sameSite: "strict",
-    //   maxAge: 24 * 60 * 60, // 1 day
-    //   path: "/",
-    // });
+    response.cookies.set({
+      name: "token",
+      value: token,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 24 * 60 * 60, // 1 day
+      path: "/",
+    });
 
     return response;
   } catch (error) {
