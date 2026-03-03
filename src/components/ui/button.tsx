@@ -22,6 +22,8 @@ const buttonVariants = cva(
         timer:
           "px-4 py-1 rounded-full font-mono text-sm border-0 cursor-pointer hover:bg-gray-300",
         brown: "rounded-lg bg-yellow-950 text-white hover:bg-white hover:text-yellow-950 hover:border-2",
+        typing:
+          "px-4 py-1 rounded-full font-mono text-sm border-0 cursor-pointer bg-gray-300 hover:bg-gray-200",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
