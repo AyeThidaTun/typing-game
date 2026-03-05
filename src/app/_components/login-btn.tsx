@@ -18,7 +18,7 @@ export default function LoginButton({ isLoggedIn }: { isLoggedIn: boolean }) {
   }
 
   return (
-    <section className="fixed inset-x-0 top-0 py-2 z-50 bg-white lg:bg-transparent">
+    <section className="fixed inset-x-0 top-0 py-2 pr-2 z-50 bg-white lg:bg-transparent">
       <div className="flex justify-end top-3 right-5 gap-2">
         {isLoggedIn ? (
           <>
