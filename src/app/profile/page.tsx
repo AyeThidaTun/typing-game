@@ -1,4 +1,3 @@
-
 import { cookies } from "next/headers";
 import { Icon } from "@iconify/react";
 import { redirect } from "next/navigation";
@@ -42,9 +41,24 @@ export default async function ProfilePage() {
             className="ml-3"
           />
         </p>
-        <p>Email: {data.user.email}</p>
+        <p>Your WPM: {data.user.wpm ? data.user.wpm : "-"}</p>
         <p>
-          Member since: {new Date(data.user.createdAt).toLocaleDateString()}
+          Last Played:{" "}
+          {data.user.updatedAt
+            ? new Date(data.user.updatedAt).toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })
+            : "-"}
+        </p>
+        <p>
+          Member since:{" "}
+          {new Date(data.user.createdAt).toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}
         </p>
       </div>
     </section>
