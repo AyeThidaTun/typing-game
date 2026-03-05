@@ -34,8 +34,14 @@ export default function Results({
   useEffect(() => {
     if (state === "finish") {
       setOpen(true);
+
+      fetch("/api/user/wpm", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ wpm }),
+      });
     }
-  }, [state]);
+  }, [state, wpm]);
 
   if (state !== "finish") {
     return null;
