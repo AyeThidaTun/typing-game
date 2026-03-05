@@ -58,7 +58,6 @@ export default function LoginPage() {
             <FieldLabel htmlFor="email">Email</FieldLabel>
             <Input
               id="email"
-              type="email"
               placeholder="name@example.com"
               {...register("email")}
             />
@@ -72,7 +71,6 @@ export default function LoginPage() {
             <FieldLabel htmlFor="password">Password</FieldLabel>
             <Input
               id="password"
-              type="password"
               placeholder="Enter your password"
               {...register("password")}
             />

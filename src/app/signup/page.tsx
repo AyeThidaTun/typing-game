@@ -68,7 +68,6 @@ export default function SignUpPage() {
               <FieldLabel htmlFor="fieldgroup-email">Email</FieldLabel>
               <Input
                 id="email"
-                type="email"
                 placeholder="name@example.com"
                 {...register("email")}
               />
@@ -82,7 +81,6 @@ export default function SignUpPage() {
               <FieldLabel htmlFor="fieldgroup-password">Password</FieldLabel>
               <Input
                 id="password"
-                type="password"
                 placeholder="Enter your password"
                 {...register("password")}
               />
