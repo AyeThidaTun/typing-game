@@ -4,21 +4,29 @@ import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useState } from "react";
 import { toast } from "sonner";
 import { Icon } from "@iconify/react";
 import { redirect } from "next/navigation";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signupSchema } from "../zod/signup/schema";
+import { useForm } from "react-hook-form";
 
 export default function SignUpPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  type SignupFormData = z.infer<typeof signupSchema>;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<SignupFormData>({
+    resolver: zodResolver(signupSchema),
+  });
 
-  async function handleSignup() {
+  async function handleSignup(data: SignupFormData) {
     const res = await fetch("/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify(data),
     });
 
     if (!res.ok) {
@@ -41,52 +49,69 @@ export default function SignUpPage() {
             className="ml-3"
           />
         </p>
-        <FieldGroup>
-          <Field>
-            <FieldLabel htmlFor="fieldgroup-name">Name</FieldLabel>
-            <Input
-              id="name"
-              placeholder="Enter your name"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </Field>
-          <Field>
-            <FieldLabel htmlFor="fieldgroup-email">Email</FieldLabel>
-            <Input
-              id="email"
-              type="email"
-              placeholder="name@example.com"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Field>
-          <Field>
-            <FieldLabel htmlFor="fieldgroup-password">Password</FieldLabel>
-            <Input
-              id="password"
-              type="password"
-              placeholder="Enter your password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Field>
-          <Field
-            orientation="horizontal"
-            className="flex flex-col justify-center"
-          >
-            <Button
-              type="button"
-              variant="brown"
-              className="cursor-pointer"
-              onClick={handleSignup}
+        <form onSubmit={handleSubmit(handleSignup)}>
+          <FieldGroup>
+            <Field>
+              <FieldLabel htmlFor="fieldgroup-name">Name</FieldLabel>
+              <Input
+                id="name"
+                placeholder="Enter your name"
+                {...register("name")}
+              />
+              {errors.name && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.name.message}
+                </p>
+              )}
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="fieldgroup-email">Email</FieldLabel>
+              <Input
+                id="email"
+                type="email"
+                placeholder="name@example.com"
+                {...register("email")}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.email.message}
+                </p>
+              )}
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="fieldgroup-password">Password</FieldLabel>
+              <Input
+                id="password"
+                type="password"
+                placeholder="Enter your password"
+                {...register("password")}
+              />
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.password.message}
+                </p>
+              )}
+            </Field>
+            <Field
+              orientation="horizontal"
+              className="flex flex-col justify-center"
             >
-              Sign Up
-            </Button>
-            <Link href="/login">
-              <p className="underline text-yellow-700 text-xs">
-                Already have an account? Login here.
-              </p>
-            </Link>
-          </Field>
-        </FieldGroup>
+              <Button
+                type="submit"
+                variant="brown"
+                className="cursor-pointer"
+                disabled={isSubmitting}
+              >
+                Sign Up
+              </Button>
+              <Link href="/login">
+                <p className="underline text-yellow-700 text-xs">
+                  Already have an account? Login here.
+                </p>
+              </Link>
+            </Field>
+          </FieldGroup>
+        </form>
       </div>
     </section>
   );
