@@ -14,7 +14,7 @@ export default function TypingGame() {
     useEngine(selectedTimer);
   return (
     <section>
-      <section className="px-100 pt-20 space-x-2">
+      <section className="px-0 flex justify-center lg:justify-start lg:px-100 pt-20 space-x-2">
         {[10, 30, 60].map((t) => (
           <Button
             key={t}
@@ -31,7 +31,7 @@ export default function TypingGame() {
         ))}
       </section>
       <Countdown time={timeLeft} />
-      <div className="px-100">
+      <div className="px-10 lg:px-100">
         <Faker words={words} typed={typed} />
       </div>
       <RestartButton onRestart={restart} />

@@ -18,39 +18,41 @@ export default function LoginButton({ isLoggedIn }: { isLoggedIn: boolean }) {
   }
 
   return (
-    <div className="fixed flex justify-end top-3 right-5 gap-2">
-      {isLoggedIn ? (
-        <>
+    <section className="fixed inset-x-0 top-0 py-2 z-50 bg-white lg:bg-transparent">
+      <div className="flex justify-end top-3 right-5 gap-2">
+        {isLoggedIn ? (
+          <>
+            <Button
+              variant="outline"
+              className="p-5 cursor-pointer hover:bg-yellow-950 hover:text-white"
+              onClick={() => router.push("/profile")}
+            >
+              <div className="flex items-center gap-2">
+                <Icon icon="bxs:user" width="24" height="24" />
+                Profile
+              </div>
+            </Button>
+            <Button
+              variant="typing"
+              className="p-5 cursor-pointer"
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          </>
+        ) : (
           <Button
             variant="outline"
             className="p-5 cursor-pointer hover:bg-yellow-950 hover:text-white"
-            onClick={() => router.push("/profile")}
+            onClick={() => router.push("/login")}
           >
             <div className="flex items-center gap-2">
               <Icon icon="bxs:user" width="24" height="24" />
-              Profile
+              Login / Sign up
             </div>
           </Button>
-          <Button
-            variant="typing"
-            className="p-5 cursor-pointer"
-            onClick={handleLogout}
-          >
-            Logout
-          </Button>
-        </>
-      ) : (
-        <Button
-          variant="outline"
-          className="p-5 cursor-pointer hover:bg-yellow-950 hover:text-white"
-          onClick={() => router.push("/login")}
-        >
-          <div className="flex items-center gap-2">
-            <Icon icon="bxs:user" width="24" height="24" />
-            Login / Sign up
-          </div>
-        </Button>
-      )}
-    </div>
+        )}
+      </div>
+    </section>
   );
 }

@@ -13,7 +13,7 @@ export default function RestartButton({
   };
 
   return (
-    <section className="fixed bottom-22 left-0 right-0 flex justify-center">
+    <section className="bottom-22 left-0 right-0 flex justify-center pt-20">
       <button ref={buttonRef} onClick={handleClick}>
         <Icon icon="solar:restart-square-line-duotone" width="30" height="30"/>
       </button>

@@ -9,7 +9,7 @@ export default async function HomePage() {
   const isLoggedIn = !!cookieStore.get("token")?.value;
 
   return (
-    <main className="">
+    <main className="min-h-screen flex flex-col">
       <LoginButton isLoggedIn={isLoggedIn} />
       <p className="flex justify-center pt-20 text-xl font-mono text-yellow-950">
         Coffee Type {""}
