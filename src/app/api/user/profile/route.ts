@@ -24,7 +24,9 @@ export async function GET(request: NextRequest) {
         id: true,
         name: true,
         email: true,
+        wpm: true,
         createdAt: true,
+        updatedAt: true,
       },
     });
 
