@@ -29,7 +29,7 @@ export default function LoginPage() {
     });
 
     if (!res.ok) {
-      toast.error("Invalid Login");
+      toast.error("Invalid Login. Please check your credentials and try again.");
       return;
     }
 
@@ -41,9 +41,9 @@ export default function LoginPage() {
   }
 
   return (
-    <section className="font-mono flex items-center justify-center h-screen">
+    <section className="font-mono flex items-center justify-center h-screen lg:px-0 px-5">
       <div className="w-full max-w-md border rounded-sm p-10 space-y-8 text-yellow-850">
-        <p className="flex items-center justify-center text-md text-yellow-950">
+        <p className="flex items-center justify-center text-md text-yellow-950" >
           Login to Coffee Type!
           <Icon
             icon="streamline-pixel:food-drink-coffee"

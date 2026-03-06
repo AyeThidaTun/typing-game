@@ -38,7 +38,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <section className="font-mono flex items-center justify-center h-screen">
+    <section className="font-mono flex items-center justify-center h-screen lg:px-0 px-5">
       <div className="w-full max-w-md border rounded-sm p-10 space-y-8 text-yellow-850">
         <p className="flex items-center justify-center text-md text-yellow-950">
           Sign up for Coffee Type!
